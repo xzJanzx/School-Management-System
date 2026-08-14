@@ -1,0 +1,93 @@
+أيوه، **دلوقتي فهمت قصدك تمامًا**. وأنت معاك حق: النسخة التي كتبتها لك في الرد السابق كانت **مبالغًا فيها** من ناحية منع التكرار، وكان ممكن فعلًا تستهلك Tokens بدون داعٍ.
+
+أنت لا تريد أن أقول لـGoogle AI Studio:
+
+> "افحص المشروع بالكامل واعمل Inventory لكل شيء..."
+
+لأن هذا قد يجعله يعيد قراءة وتحليل أشياء كثيرة **نحن أصلًا أرسلناها له في البرومبتات السابقة**.
+
+### المقصود الصحيح
+
+أنت تريد أن يكون **Master Implementation Prompt — Module 01**:
+
+> **Prompt تكميلي (Continuation Prompt)** للمواصفات والـPrompts التي أُرسلت سابقًا، وليس Prompt يعيد شرح المشروع من الصفر.
+
+وهذا يتفق مع منهج المشروع الذي اعتمدناه:
+
+```text id="ty28v0"
+المواصفات المعتمدة
+        ↓
+تفكيك الموديول
+        ↓
+Prompts / أجزاء سابقة
+        ↓
+Master Implementation Prompt
+        ↓
+Google AI Studio
+        ↓
+تنفيذ ما لم يُنفذ بعد فقط
+```
+
+والمواصفة نفسها تنص على أن Module 01 هو Student Master Data، وأننا لا ننفذ Module 02–05 إلا بحدود التكامل الضرورية. fileciteturn2file1
+
+## إذن التعديل الذي نحتاجه صغير جدًا
+
+بدل أن نضع عشرات الأقسام التي تعيد شرح ما قلناه سابقًا، نضع في بداية الـPrompt **تعليمات استمرارية قوية** مثل:
+
+> **This is a continuation implementation prompt. All previously supplied SMS specifications, architecture decisions, approved business rules, database decisions, security rules, and previous implementation prompts remain authoritative. Do not repeat, redesign, or reimplement anything already established or implemented. Continue from the current project state and implement only the remaining requirements of Module 01.**
+
+ثم نحدد له:
+
+### 1. لا تعيد تنفيذ ما سبق
+
+إذا كان شيء قد تم تنفيذه بالفعل في البرومبتات السابقة أو موجودًا في المشروع:
+
+**اعتبره مرجعًا/مكتملًا ولا تعيده.**
+
+### 2. لا تعيد شرح المواصفات
+
+لا يحتاج أن يعيد تحليل:
+
+- Architecture
+- Authentication
+- Authorization
+- Backup
+- Settings
+- Database strategy
+- LAN architecture
+
+إلا إذا كان Module 01 يحتاج تعديلًا فعليًا عليها.
+
+### 3. لا يبدأ من الصفر
+
+يبدأ من:
+
+> **Current project state**
+
+وينفذ **الجزء المتبقي فقط من Module 01**.
+
+### 4. لا ينتقل للموديول التالي
+
+حتى لو اكتمل Module 01، يتوقف.
+
+---
+
+**وبالتالي نعم: أنا أرى أن الـMaster Prompt الذي أرسلته لك قبل قليل يحتاج تعديلًا.**
+
+ليس لأن محتواه الوظيفي خاطئ، بل لأننا نريد منه أن يكون **خفيفًا وتكميليًا** ويحافظ على الـTokens.
+
+والملفات تؤكد أن الخطة الأصلية كانت فعلًا أن يكون لكل مرحلة **Prompt تنفيذ مستقل** بعد اعتماد المواصفات، وليس إعادة بناء كل ما سبق في كل Prompt. fileciteturn2file3turn2file7
+
+### الخلاصة
+
+**لا نريد:**
+
+> Master Prompt = إعادة شرح SMS + Module 01 بالكامل + فحص كل المشروع.
+
+**نريد:**
+
+> Master Prompt = **Continuation + Execute Module 01 + Respect Everything Previously Approved + Implement Only Missing/Not-Yet-Implemented Parts.**
+
+وده هو الأسلوب الصحيح لتوفير الـTokens.
+
+إذا أردت، أقدر الآن أجهز لك **النسخة النهائية القصيرة والمحكمة من Master Implementation Prompt — SMS Module 01 (Continuation Version)** بحيث تكون جاهزة للنسخ إلى Google AI Studio مباشرة.

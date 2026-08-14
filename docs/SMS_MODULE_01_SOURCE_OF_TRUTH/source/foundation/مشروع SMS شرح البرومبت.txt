@@ -1,0 +1,1283 @@
+أيوه، الآن فهمتك بالضبط. 👍
+
+أنت **لا تريد Prompt للوكيل لكي ينفذ SMS**، ولا تريد أن يعرف الوكيل "وصلنا لفين".
+
+أنت تريد **Prompt تعريفي/دراسي** تأخذه لأي AI Agent، وتقول له:
+
+> **"اقرأ هذا وافهم مشروعنا بالكامل: ما فكرته؟ لماذا نعمله؟ كيف درسناه؟ ما المشكلة التي يحلها؟ كيف تخيلنا النظام؟ ما هي مكوناته ووحداته؟ وما هي الرؤية التي بنينا عليها المستندات؟"**
+
+يعني كأننا نعطي الوكيل **ملف تعريف المشروع + دراسة المشروع**، وليس Implementation Prompt.
+
+وهذا فرق مهم جدًا.
+
+راجعت المصادر الموجودة، وهي فعلًا تحتوي على أكثر من مستوى من الدراسة: الرؤية العامة للنظام، نموذج التشغيل Local LAN Multi-User، تفكيك Student Affairs، تقسيم Modules 01–05، قواعد الهوية والتسجيل والتحويلات، الـUI/UX، الـSecurity، الـBackup، والـArchitecture. fileciteturn2file9 fileciteturn2file18
+
+لذلك أقترح أن يكون الـPrompt التالي **Project Vision & Study Brief** وليس Master Implementation Prompt.
+
+---
+
+# 🏫 SMS — SCHOOL MANAGEMENT SYSTEM
+## MASTER PROJECT IDEA & STUDY BRIEF
+### Universal AI Agent Understanding Prompt — V1.0
+
+**انسخه لأي وكيل ذكاء اصطناعي كما هو:**
+
+```text id="xbfmah"
+# ============================================================
+# SMS — SCHOOL MANAGEMENT SYSTEM
+# MASTER PROJECT IDEA & SYSTEM STUDY
+# UNIVERSAL AI AGENT CONTEXT
+# VERSION 1.0
+# ============================================================
+
+## PURPOSE OF THIS DOCUMENT
+
+This document is NOT an implementation prompt.
+
+It is NOT asking you to write code.
+
+It is NOT asking you to inspect the current repository.
+
+It is NOT asking you to determine what has already been implemented.
+
+It is NOT a project-status report.
+
+Its only purpose is to make you understand the IDEA, VISION,
+BUSINESS PROBLEM, FUNCTIONAL STUDY, SYSTEM CONCEPT, and
+ARCHITECTURAL THINKING behind our project:
+
+SMS — School Management System.
+
+You are expected to understand the project as a product and
+business/system concept before doing any future work on it.
+
+============================================================
+1. PROJECT NAME
+============================================================
+
+SMS
+
+School Management System
+
+Arabic concept:
+
+نظام إدارة المدارس
+
+The system is intended to become a real school-management
+platform for daily administrative and academic operations.
+
+============================================================
+2. THE BASIC IDEA
+============================================================
+
+The basic idea is to build one centralized School Management
+System that organizes the school's information and operational
+processes into one coherent system.
+
+Instead of having:
+
+- separate spreadsheets;
+- disconnected applications;
+- manually maintained student records;
+- isolated academic records;
+- disconnected transfer records;
+- duplicated student information;
+- uncontrolled paper-based history;
+
+the school should have one structured digital system.
+
+The system should provide a single coherent environment in which
+authorized school staff can manage students and the academic
+structure surrounding them.
+
+The core philosophy is:
+
+ONE SCHOOL
++
+ONE SYSTEM
++
+ONE CENTRAL DATA SOURCE
++
+ONE STUDENT IDENTITY
++
+COMPLETE HISTORY
++
+CONTROLLED OPERATIONS
+
+============================================================
+3. THE PROBLEM WE ARE TRYING TO SOLVE
+============================================================
+
+School administration involves many related pieces of information.
+
+A student is not just a name in a table.
+
+The school needs to understand:
+
+- who the student is;
+- how to identify the student permanently;
+- who the student's parents/guardians are;
+- where the student belongs academically;
+- which academic year the student belongs to;
+- which grade and class the student belongs to;
+- what the student's enrollment history is;
+- whether the student moved between classes;
+- whether the student transferred externally;
+- what happened to the student's historical records;
+- who performed important operations;
+- when those operations happened.
+
+If these areas are managed separately, several problems appear:
+
+- duplicate student records;
+- inconsistent student information;
+- lost academic history;
+- incorrect class placement;
+- capacity problems;
+- uncontrolled transfers;
+- weak accountability;
+- difficult reporting;
+- dependence on manual work;
+- difficulty maintaining historical records.
+
+SMS is designed around solving these problems systematically.
+
+============================================================
+4. THE MOST IMPORTANT CONCEPT:
+   THE STUDENT IS A PERMANENT IDENTITY
+============================================================
+
+One of the fundamental ideas in our study is:
+
+A STUDENT IS A PERMANENT MASTER ENTITY.
+
+The student should have one permanent identity inside the system.
+
+Academic circumstances can change.
+
+For example:
+
+Student
+    ↓
+Academic Year 2025/2026
+    ↓
+Grade 5
+    ↓
+Class 5-A
+
+Later:
+
+Student
+    ↓
+Academic Year 2026/2027
+    ↓
+Grade 6
+    ↓
+Class 6-B
+
+The student is still the SAME student.
+
+We must not create another Student record simply because:
+
+- the academic year changed;
+- the grade changed;
+- the class changed;
+- the student transferred;
+- the enrollment changed.
+
+This distinction is fundamental to the entire system.
+
+============================================================
+5. STUDENT VS ENROLLMENT VS TRANSFER
+============================================================
+
+These concepts must never be confused.
+
+STUDENT:
+
+Permanent identity of the person.
+
+ENROLLMENT:
+
+The student's academic registration in a specific academic
+context/year.
+
+TRANSFER:
+
+A controlled operation that changes the student's academic
+placement and/or enrollment situation according to approved
+business rules.
+
+Conceptually:
+
+Student
+   │
+   ├── Guardian Relationships
+   │
+   ├── Enrollment History
+   │
+   └── Transfer History
+
+Therefore:
+
+Student ≠ Enrollment
+
+Student ≠ Transfer
+
+Enrollment ≠ Transfer
+
+They are related but different concepts.
+
+============================================================
+6. THE SYSTEM IS BUILT AROUND RELATIONSHIPS
+============================================================
+
+The project is not simply a collection of CRUD screens.
+
+It is a relational business system.
+
+The important relationships include:
+
+Student
+   │
+   ├──────── Guardian
+   │
+   ├──────── Enrollment
+   │
+   └──────── Transfer History
+
+Academic Structure:
+
+Academic Year
+      ↓
+Stage
+      ↓
+Grade
+      ↓
+Class
+
+Enrollment connects the student to the academic structure.
+
+Transfer connects controlled student movement to the existing
+student and enrollment history.
+
+This relationship model is one of the most important aspects of
+the project.
+
+============================================================
+7. STUDENT AFFAIRS — THE CORE BUSINESS DOMAIN
+============================================================
+
+The main business domain studied so far is:
+
+STUDENT AFFAIRS
+
+The initial functional decomposition includes areas such as:
+
+Student Management
+    ├── Add Student
+    ├── Edit Student
+    ├── View Student
+    ├── Search
+    └── Student Profile
+
+Enrollment
+    ├── New Enrollment
+    ├── Re-enrollment
+    ├── Academic History
+    └── Status
+
+Guardians
+
+Transfers
+    ├── Internal
+    ├── Incoming
+    └── Outgoing
+
+Promotion
+    ├── Individual
+    └── Bulk
+
+Documents
+
+Reports
+
+Audit
+
+These represent the broader Student Affairs vision.
+
+However, not every item above should automatically be treated as
+implemented or fully specified.
+
+The distinction between:
+
+PROJECT VISION
+
+and
+
+FORMALLY SPECIFIED FUNCTIONAL SCOPE
+
+must always be maintained.
+
+============================================================
+8. INITIAL FORMAL MODULE STRUCTURE
+============================================================
+
+The formal Student Affairs study developed an initial sequence:
+
+MODULE 01
+Student Master Data
+
+MODULE 02
+Parent / Guardian
+
+MODULE 03
+Academic Structure
+
+MODULE 04
+Student Enrollment
+
+MODULE 05
+Student Transfers
+
+The dependency concept is:
+
+Student Master
+      ↓
+Parent / Guardian
+      ↓
+Academic Structure
+      ↓
+Enrollment
+      ↓
+Transfers
+
+This sequence reflects business dependency.
+
+A transfer cannot be properly understood without understanding:
+
+- the student;
+- the academic structure;
+- the student's enrollment.
+
+============================================================
+9. MODULE 01 — STUDENT MASTER DATA
+============================================================
+
+The first core concept is the Student Master.
+
+This module represents the student's permanent identity and
+master information.
+
+The study includes concepts such as:
+
+- Student ID;
+- File Number;
+- National ID;
+- personal information;
+- student profile;
+- student status;
+- documents/metadata where applicable;
+- duplicate detection;
+- validation;
+- audit;
+- permissions;
+- search.
+
+The important concept is that Module 01 owns the permanent
+student identity.
+
+Other modules should reference that identity rather than
+recreating it.
+
+============================================================
+10. MODULE 02 — PARENT / GUARDIAN
+============================================================
+
+A student may have relationships with one or more parents or
+guardians.
+
+Therefore the system should model the relationship explicitly.
+
+Conceptually:
+
+Student
+   │
+   ├── Guardian A
+   ├── Guardian B
+   └── Guardian C
+
+The relationship can contain information such as:
+
+- relationship type;
+- primary guardian;
+- contact information;
+- relationship status;
+- relevant communication information.
+
+The important architectural idea is:
+
+Guardian information belongs to its own domain.
+
+It should not be duplicated inside every student record.
+
+============================================================
+11. MODULE 03 — ACADEMIC STRUCTURE
+============================================================
+
+The school needs a formal academic hierarchy.
+
+The studied structure is:
+
+Academic Year
+      ↓
+Stage
+      ↓
+Grade
+      ↓
+Class
+
+For example:
+
+Academic Year
+2026/2027
+
+    ↓
+
+Stage
+Primary
+
+    ↓
+
+Grade
+Grade 5
+
+    ↓
+
+Class
+5-A
+
+This structure is not merely visual.
+
+It provides the academic context used by enrollment and transfer
+operations.
+
+The hierarchy must therefore be treated as structured data.
+
+============================================================
+12. MODULE 04 — STUDENT ENROLLMENT
+============================================================
+
+Enrollment represents the student's registration within the
+academic structure for a specific academic context.
+
+Conceptually:
+
+Student
++
+Academic Year
++
+Stage
++
+Grade
++
+Class
+=
+Enrollment
+
+This is why Enrollment should not be stored simply as a current
+field on the Student.
+
+The system needs historical enrollment.
+
+For example:
+
+Student A
+
+2024/2025 → Grade 4 → Class 4-A
+
+2025/2026 → Grade 5 → Class 5-B
+
+2026/2027 → Grade 6 → Class 6-A
+
+The student remains one person.
+
+The enrollment history records the student's academic journey.
+
+============================================================
+13. MODULE 05 — STUDENT TRANSFERS
+============================================================
+
+The transfer domain manages controlled student movement.
+
+Two major concepts are distinguished:
+
+INTERNAL TRANSFER
+
+and
+
+EXTERNAL TRANSFER.
+
+Internal transfer means the student remains within the school
+but changes academic placement according to approved rules.
+
+External transfer means the student moves to another
+school/institution.
+
+The transfer process must preserve:
+
+- student identity;
+- enrollment history;
+- transfer history;
+- audit history.
+
+A transfer must never create a duplicate student.
+
+============================================================
+14. INTERNAL TRANSFER CONCEPT
+============================================================
+
+An internal transfer may involve movement between:
+
+- classes;
+- grades;
+- stages;
+
+where permitted by the academic rules.
+
+The process must consider:
+
+- current enrollment;
+- destination academic structure;
+- capacity;
+- authorization;
+- effective date;
+- reason;
+- historical preservation.
+
+Conceptually:
+
+Current Enrollment
+        ↓
+Transfer Request
+        ↓
+Validation
+        ↓
+Review
+        ↓
+Approval
+        ↓
+Execution
+        ↓
+New Academic Placement
+        ↓
+Historical Transfer Record
+
+The exact business rules are defined by the approved project
+specifications.
+
+============================================================
+15. EXTERNAL TRANSFER CONCEPT
+============================================================
+
+An external transfer represents the student's movement out of
+the school to another institution.
+
+The system must preserve the student's historical identity.
+
+The student's previous records should remain historically
+traceable.
+
+External transfer is therefore not equivalent to deleting the
+student.
+
+The distinction is:
+
+DELETE THE PERSON
+
+versus
+
+CHANGE THE PERSON'S CURRENT SCHOOL STATUS
+
+The project is designed around preserving history.
+
+============================================================
+16. HISTORICAL INTEGRITY
+============================================================
+
+Historical information is one of the major design principles.
+
+The system should answer questions such as:
+
+- Where was this student enrolled last year?
+- Which class did the student belong to?
+- When did the student transfer?
+- From where?
+- To where?
+- Who approved the operation?
+- When did it happen?
+- What was the student's previous academic placement?
+
+Therefore the system must not destroy history simply to represent
+the current state.
+
+CURRENT STATE
+
+and
+
+HISTORICAL STATE
+
+are both important.
+
+============================================================
+17. SCHOOL OPERATING MODEL
+============================================================
+
+The system was studied primarily as:
+
+LOCAL LAN
++
+MULTI-USER
++
+CENTRAL SERVER
++
+CENTRAL DATABASE
+
+Conceptually:
+
+                 SCHOOL SERVER
+                      │
+                SMS Application
+                      │
+                 Central DB
+                      │
+               School LAN
+          ┌───────────┼───────────┐
+          │           │           │
+       Computer    Computer    Computer
+        Client      Client      Client
+
+Authorized school staff access the same centralized system.
+
+This is intended to avoid disconnected copies of school data.
+
+============================================================
+18. LOCAL / OFFLINE OPERATION
+============================================================
+
+Normal school operations should not depend on public Internet
+availability.
+
+The core system is intended to operate inside the school LAN.
+
+If the Internet connection is unavailable, normal local school
+operations should continue.
+
+Optional external services, such as cloud backup, should not
+become a dependency for the core school workflow.
+
+============================================================
+19. MULTI-USER THINKING
+============================================================
+
+SMS is not a single-user spreadsheet replacement.
+
+Multiple authorized users may work with the same school data.
+
+Therefore the system must conceptually support:
+
+- authentication;
+- authorization;
+- concurrent operations;
+- transactions;
+- data integrity;
+- audit;
+- persistent sessions;
+- controlled permissions.
+
+This is especially important for operations such as:
+
+- enrollment;
+- capacity management;
+- transfer approval;
+- transfer execution.
+
+============================================================
+20. SECURITY CONCEPT
+============================================================
+
+Security is part of the system design, not an optional feature.
+
+The system should have:
+
+Authentication
++
+Authorization
++
+Audit
+
+Authentication answers:
+
+WHO ARE YOU?
+
+Authorization answers:
+
+WHAT ARE YOU ALLOWED TO DO?
+
+Audit answers:
+
+WHAT HAPPENED, WHO DID IT, AND WHEN?
+
+UI restrictions alone are not sufficient.
+
+Important operations must be protected at the server/business
+level.
+
+============================================================
+21. AUDIT CONCEPT
+============================================================
+
+The system needs an audit trail for important operations.
+
+Examples include:
+
+- student changes;
+- guardian changes;
+- enrollment changes;
+- transfer operations;
+- approvals;
+- sensitive administrative actions.
+
+The purpose is accountability and historical traceability.
+
+The audit system should answer:
+
+WHO?
+
+WHAT?
+
+WHEN?
+
+AND, where required:
+
+WHAT CHANGED?
+
+============================================================
+22. BACKUP CONCEPT
+============================================================
+
+Because the system contains important school data, backup is
+part of the product concept.
+
+The studied strategy is layered.
+
+LEVEL 1
+Automatic local backup.
+
+LEVEL 2
+External connected backup medium.
+
+LEVEL 3
+Optional cloud backup.
+
+The cloud layer is optional infrastructure support.
+
+The school should not lose the ability to operate locally
+because the Internet is unavailable.
+
+============================================================
+23. USER EXPERIENCE VISION
+============================================================
+
+SMS is intended for daily school-office work.
+
+The UI should therefore be:
+
+- modern;
+- professional;
+- clean;
+- practical;
+- fast;
+- easy to learn;
+- Arabic-first;
+- RTL-capable;
+- English-capable;
+- consistent;
+- suitable for non-technical administrative staff.
+
+The system should feel like a professional administrative
+application, not a developer-oriented dashboard.
+
+============================================================
+24. DAILY WORKFLOW PHILOSOPHY
+============================================================
+
+The interface should optimize the common work of school staff.
+
+The design should prioritize:
+
+- fast search;
+- clear student identification;
+- clear forms;
+- simple workflows;
+- clear statuses;
+- useful filtering;
+- tables for operational data;
+- safe confirmations;
+- understandable errors;
+- minimal unnecessary clicks.
+
+The system is an operational tool.
+
+Therefore usability and speed are important.
+
+============================================================
+25. ARABIC + ENGLISH
+============================================================
+
+The project is intended to support:
+
+Arabic
++
+English
+
+Arabic is an important primary language for the target
+environment.
+
+The system must therefore be designed with RTL/LTR considerations
+from the beginning rather than adding Arabic as an afterthought.
+
+============================================================
+26. APPLICATION AS ONE PRODUCT
+============================================================
+
+The modules are not separate products.
+
+They form one system:
+
+                 SMS
+                  │
+        ┌─────────┼─────────┐
+        │         │         │
+      Student   Academic   Operations
+        │         │         │
+        └─────────┼─────────┘
+                  │
+             Shared Platform
+                  │
+        ┌─────────┼─────────┐
+        │         │         │
+      Security   Audit    Backup
+
+The user should feel that they are using one school system.
+
+Not five independent applications.
+
+============================================================
+27. DATA OWNERSHIP CONCEPT
+============================================================
+
+The study introduced clear conceptual ownership.
+
+Platform/Auth
+    → Users / Sessions
+
+Module 01
+    → Student
+
+Module 02
+    → Guardian / Student-Guardian relationship
+
+Module 03
+    → Academic Year / Stage / Grade / Class
+
+Module 04
+    → Enrollment
+
+Module 05
+    → Transfer history / transfer operations
+
+Shared platform
+    → Audit / Backup / Configuration
+
+This ownership model prevents duplication and conflicting
+business logic.
+
+============================================================
+28. THE PROJECT IS NOT JUST CRUD
+============================================================
+
+Although the system contains screens such as:
+
+Add
+Edit
+View
+Search
+Delete/Archive
+
+the real value is in the business relationships and workflows.
+
+For example:
+
+"Add Student"
+
+is not simply:
+
+INSERT INTO students
+
+It may involve:
+
+identity rules
++
+duplicate detection
++
+validation
++
+permissions
++
+audit
++
+historical rules.
+
+Likewise:
+
+"Transfer Student"
+
+is not simply:
+
+UPDATE class_id
+
+It involves:
+
+student identity
++
+current enrollment
++
+destination academic structure
++
+capacity
++
+authorization
++
+workflow
++
+history
++
+audit.
+
+This is the level at which the SMS project should be understood.
+
+============================================================
+29. PROJECT STUDY PHILOSOPHY
+============================================================
+
+The project was intentionally studied in layers rather than
+jumping directly to coding.
+
+The conceptual sequence is:
+
+BUSINESS IDEA
+      ↓
+SYSTEM REQUIREMENTS
+      ↓
+FUNCTIONAL DECOMPOSITION
+      ↓
+BUSINESS RULES
+      ↓
+DOMAIN / ENTITY MODEL
+      ↓
+DATABASE DESIGN
+      ↓
+API / SECURITY
+      ↓
+UI / UX
+      ↓
+IMPLEMENTATION
+      ↓
+TESTING
+      ↓
+ACCEPTANCE
+
+This means the documents are not random technical documents.
+
+They represent different levels of understanding of the same
+system.
+
+============================================================
+30. IMPORTANT DISTINCTION:
+    VISION VS FORMAL SPECIFICATION
+============================================================
+
+This distinction is essential.
+
+There are two types of information in the project:
+
+A. PRODUCT VISION
+
+What we want SMS to become as a school-management platform.
+
+B. FORMALLY APPROVED SCOPE
+
+Requirements that have been explicitly specified and approved
+for a particular module or phase.
+
+Do not confuse them.
+
+For example:
+
+Student Affairs may conceptually include:
+
+- promotion;
+- documents;
+- reports;
+- transfers;
+- guardians;
+- enrollment.
+
+But a specific implementation phase may formally cover only
+certain parts.
+
+Therefore:
+
+VISION ≠ CURRENT IMPLEMENTATION SCOPE.
+
+============================================================
+31. IMPORTANT DISTINCTION:
+    IDEA VS IMPLEMENTATION
+============================================================
+
+This document is intentionally independent from the current
+implementation state.
+
+Do NOT use this document to infer:
+
+- what is already coded;
+- what is incomplete;
+- what passed tests;
+- what failed tests;
+- what repository currently contains;
+- what agent implemented;
+- what database currently exists.
+
+Those are separate questions.
+
+This document describes:
+
+WHAT SMS IS SUPPOSED TO BE.
+
+============================================================
+32. WHAT SUCCESS LOOKS LIKE
+============================================================
+
+The successful product is a school system where authorized staff
+can manage the student's journey in one coherent environment.
+
+A simplified lifecycle is:
+
+Student Identity
+       ↓
+Guardian Relationships
+       ↓
+Academic Placement
+       ↓
+Enrollment
+       ↓
+Academic History
+       ↓
+Internal / External Movement
+       ↓
+Historical Records
+       ↓
+Audit
+
+All of this occurs inside one secure, centralized system.
+
+============================================================
+33. THE CORE PRODUCT PRINCIPLES
+============================================================
+
+The SMS project can be summarized by these principles:
+
+1. ONE STUDENT IDENTITY
+
+Never duplicate a student because circumstances changed.
+
+2. ONE CENTRAL SYSTEM
+
+Modules are parts of one product.
+
+3. STRUCTURED ACADEMIC DATA
+
+Academic Year → Stage → Grade → Class.
+
+4. HISTORICAL PRESERVATION
+
+Current state must not destroy historical state.
+
+5. CONTROLLED WORKFLOWS
+
+Important operations are validated and authorized.
+
+6. MULTI-USER OPERATION
+
+Multiple school staff can work safely.
+
+7. SECURITY
+
+Authentication + Authorization + Audit.
+
+8. LOCAL-FIRST SCHOOL OPERATION
+
+Core operations work through the school LAN without requiring
+the public Internet.
+
+9. BACKUP
+
+School data must be recoverable.
+
+10. PROFESSIONAL UX
+
+The system must be practical for real school staff.
+
+11. MODULARITY
+
+New functionality should extend the existing domain model
+rather than duplicate it.
+
+12. DATA INTEGRITY
+
+Business rules must be reflected in the data model and
+operations.
+
+============================================================
+34. HOW YOU SHOULD THINK ABOUT SMS
+============================================================
+
+Do not think of SMS as:
+
+"an application with some student screens."
+
+Think of it as:
+
+"A centralized operational information system that models the
+school's student lifecycle and the academic relationships around
+each student."
+
+The Student is the center.
+
+Around the Student:
+
+Guardian
+Academic Structure
+Enrollment
+Transfers
+History
+Audit
+
+Around the whole system:
+
+Users
+Permissions
+Security
+Backup
+Configuration
+Reports
+Future Modules
+
+============================================================
+35. FUTURE EXPANSION
+============================================================
+
+The project is designed to be expandable.
+
+The initial focus is Student Affairs.
+
+The architecture and domain boundaries should allow future
+school-management capabilities to integrate without destroying
+the existing model.
+
+However:
+
+Do NOT invent future modules or requirements.
+
+Future scope must be formally studied and approved before being
+treated as part of the product.
+
+============================================================
+36. FINAL UNDERSTANDING REQUIRED
+============================================================
+
+After reading this document, you should be able to explain:
+
+1. What SMS is.
+2. What problem it solves.
+3. Who the system is intended for.
+4. How the school operates through it.
+5. Why Student identity is permanent.
+6. The difference between Student, Enrollment, and Transfer.
+7. Why Academic Structure exists.
+8. Why historical data matters.
+9. Why Parent/Guardian is a separate domain.
+10. Why Transfers are controlled workflows.
+11. Why authentication and authorization are necessary.
+12. Why audit is necessary.
+13. Why backup is necessary.
+14. Why LAN/local operation matters.
+15. Why Arabic/RTL matters.
+16. Why the system is one product rather than independent
+    modules.
+17. The difference between product vision and implementation
+    scope.
+18. The difference between understanding the project and
+    implementing the project.
+
+============================================================
+FINAL INSTRUCTION TO THE AI AGENT
+============================================================
+
+Before performing any future task related to SMS:
+
+FIRST understand the product concept described here.
+
+Then consult the relevant project specification/document for the
+specific task.
+
+Do not invent requirements that are not supported by the project
+documents.
+
+Do not confuse historical implementation information with the
+product idea.
+
+Do not confuse project vision with the scope of a particular
+implementation phase.
+
+The purpose of this document is simple:
+
+UNDERSTAND THE PROJECT FIRST.
+
+IMPLEMENTATION COMES LATER.
+
+============================================================
+END OF SMS MASTER PROJECT IDEA & STUDY
+============================================================
+```
+
+### دي هي النسخة اللي كنت تقصدها
+
+والفرق بينها وبين الرد السابق كبير:
+
+**الرد السابق:**  
+> "أنت وكيل تنفيذ، هذه قواعد الـRepository، وهذه الـAcceptance Gates، وهذه حالة Module 05..."
+
+**النسخة الحالية:**  
+> "هذه فكرة SMS، وهذه المشكلة التي نحلها، وهذه فلسفة النظام، وهذه طريقة عمل المدرسة، وهذه علاقة الطالب بولي الأمر والهيكل الأكاديمي والتسجيل والتحويلات، وهذه رؤيتنا للـUX والأمان والـBackup."
+
+وهذا أقرب فعلًا إلى **دراسة المشروع التي عملناها معًا**.
+
+وأنا تعمدت عدم وضع أرقام مثل *Module 05 فيه GAP-01* أو *SOURCE-B هو الحالي* أو *00.04 تم تنفيذه*؛ لأنها **حالة تنفيذ وليست فكرة المشروع**.
+
+كذلك حافظت على التفريق الموجود في وثائقنا بين **الرؤية الكبيرة لـStudent Affairs** التي تشمل Student Management وEnrollment وGuardians وTransfers وPromotion وDocuments وReports وAudit، وبين الموديولات التي تم تحويلها لاحقًا إلى نطاقات رسمية. fileciteturn2file18
+
+والأهم أن الـPrompt يشرح للوكيل **لماذا** صممنا النظام بهذه الطريقة، وليس فقط **ماذا** يحتوي.
+
+**لو أعطيته لوكيل جديد، المفروض بعد قراءته يفهم SMS كمنتج حتى لو لم يرَ سطر كود واحد.**
