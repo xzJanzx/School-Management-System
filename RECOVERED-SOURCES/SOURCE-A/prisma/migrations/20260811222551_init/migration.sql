@@ -1,0 +1,6 @@
+-- CreateTable
+CREATE TABLE "SystemHealthCheck" (
+    "id" TEXT NOT NULL PRIMARY KEY,
+    "checkedAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "status" TEXT NOT NULL DEFAULT 'OK'
+);

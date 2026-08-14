@@ -1,0 +1,157 @@
+// SMS — School Management System
+// Prisma Schema Foundation (SQLite)
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// Minimal infrastructure model to verify Prisma + SQLite connection
+model SystemHealthCheck {
+  id        String   @id @default(uuid())
+  checkedAt DateTime @default(now())
+  status    String   @default("OK")
+}
+
+// Sequence generator for unique permanent sequential IDs (Student ID & File Number)
+model Sequence {
+  key   String @id
+  value Int    @default(1000)
+}
+
+// Module 01: Permanent Student Identity Master Record
+model Student {
+  id             String            @id @default(uuid())
+  studentId      String            @unique // Permanent System ID e.g. STD-2026-00001
+  fileNumber     String            @unique // Permanent File Number e.g. FN-2026-00001
+  firstName      String
+  middleName     String?
+  lastName       String
+  fullNameArabic String?
+  gender         String            // MALE | FEMALE
+  dateOfBirth    DateTime
+  placeOfBirth   String?
+  nationality    String?
+  nationalId     String?           @unique // Civil ID / National ID / Passport
+  passportNumber String?
+  religion       String?
+  bloodGroup     String?
+  medicalNotes   String?
+  
+  // Contact & Address
+  addressLine1   String?
+  city           String?
+  state          String?
+  postalCode     String?
+  country        String?
+  phone          String?
+  email          String?
+  
+  // Master Status
+  status         String            @default("ACTIVE") // ACTIVE | INACTIVE | ARCHIVED | SUSPENDED
+  
+  // Timestamps
+  createdAt      DateTime          @default(now())
+  updatedAt      DateTime          @updatedAt
+
+  // Documents, Status History, and Guardians
+  documents      StudentDocument[]
+  statusHistory  StudentStatusHistory[]
+  guardians      StudentGuardian[]
+
+  @@index([firstName, lastName])
+  @@index([status])
+}
+
+// Student Status Historical Transitions
+model StudentStatusHistory {
+  id         String   @id @default(uuid())
+  studentId  String
+  student    Student  @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  oldStatus  String?
+  newStatus  String
+  reason     String
+  changedBy  String
+  changedAt  DateTime @default(now())
+
+  @@index([studentId])
+}
+
+// Module 01 - 02 Integration Boundary: Guardian Master Data
+model Guardian {
+  id                     String            @id @default(uuid())
+  guardianId             String            @unique // Permanent System ID e.g. GUA-2026-10001
+  firstName              String
+  lastName               String
+  nationalId             String?           @unique
+  phone                  String            // Primary Phone (Required)
+  additionalPhone        String?
+  email                  String?
+  address                String?
+  canContact             Boolean           @default(true)
+  preferredContactMethod String            @default("PHONE") // PHONE | SMS | EMAIL | WHATSAPP
+  status                 String            @default("ACTIVE") // ACTIVE | INACTIVE
+  relationship           String?           // Legacy field retained for backward compatibility
+  createdAt              DateTime          @default(now())
+  updatedAt              DateTime          @updatedAt
+
+  students               StudentGuardian[]
+
+  @@index([firstName, lastName])
+  @@index([phone])
+  @@index([status])
+}
+
+// Student-Guardian Junction (Supports multi-guardian and primary guardian tracking)
+model StudentGuardian {
+  id                      String   @id @default(uuid())
+  studentId               String
+  student                 Student  @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  guardianId              String
+  guardian                Guardian @relation(fields: [guardianId], references: [id], onDelete: Cascade)
+  isPrimary               Boolean  @default(false)
+  relationship            String?  // FATHER | MOTHER | GRANDFATHER | GRANDMOTHER | BROTHER | SISTER | UNCLE | AUNT | MATERNAL_UNCLE | MATERNAL_AUNT | LEGAL_GUARDIAN | OTHER
+  relationshipDescription String?  // Optional description when relationship is OTHER
+  createdAt               DateTime @default(now())
+  updatedAt               DateTime @default(now()) @updatedAt
+
+  @@unique([studentId, guardianId])
+  @@index([studentId])
+  @@index([guardianId])
+}
+
+// Student Master Data Associated Documents
+model StudentDocument {
+  id           String   @id @default(uuid())
+  studentId    String
+  student      Student  @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  title        String
+  documentType String   // BIRTH_CERTIFICATE | NATIONAL_ID | PASSPORT | MEDICAL_RECORD | PHOTO | OTHER
+  fileName     String
+  filePath     String
+  fileSize     Int
+  mimeType     String
+  uploadedAt   DateTime @default(now())
+
+  @@index([studentId])
+}
+
+// System Audit Log for Master Operations
+model AuditLog {
+  id         String   @id @default(uuid())
+  entityType String   // e.g. STUDENT
+  entityId   String?
+  action     String   // CREATE | UPDATE | DELETE | STATUS_CHANGE | DUPLICATE_OVERRIDE | DOCUMENT_UPLOAD
+  details    String?  // JSON stringified payload
+  actor      String   @default("SYSTEM")
+  reason     String?
+  timestamp  DateTime @default(now())
+
+  @@index([entityType, entityId])
+  @@index([timestamp])
+}
+
