@@ -1,0 +1,14 @@
+# C-38 — Role & Permission Enforcement
+
+## Requirement
+Role & Permission Enforcement
+
+## Latest Status
+PASS in latest 05.04.
+
+## Acceptance Rule
+PASS requires actual execution and evidence. An AI claim or source inspection
+alone is insufficient.
+
+## Boundary
+This gate belongs to the authoritative Module 05 C-31 → C-40 contract.

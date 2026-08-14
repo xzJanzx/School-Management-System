@@ -1,0 +1,74 @@
+# SMS — Module 03 — Academic Structure
+# 03.02 Decomposition & Acceptance Matrix
+
+## Status
+APPROVED
+
+## Required implementation components
+03.02.01 — Academic Year
+03.02.02 — Academic Stage
+03.02.03 — Grade
+03.02.04 — Class
+03.02.05 — Default Academic Seed Structure
+03.02.06 — Ordering & Academic Path
+03.02.07 — Capacity Management
+03.02.08 — Lifecycle & Historical Integrity
+03.02.09 — Validation / Permissions / Audit
+03.02.10 — Integration / Search / Testing
+
+## Persistence
+Use the existing project database and migration architecture.
+
+Required integrity:
+- primary keys
+- foreign keys
+- unique constraints
+- indexes
+- status/lifecycle fields
+- audit-compatible metadata
+
+Protect:
+- Academic Year uniqueness
+- maximum one Active Academic Year
+- Stage → Grade integrity
+- Grade → Class integrity
+- Class Code uniqueness
+
+## Academic Structure
+Academic Year → Stage → Grade → Class is configurable and must not be hard-coded
+in a way that prevents authorized administration from changing it.
+
+## Capacity
+Normal operations must not exceed Class Capacity.
+Administrative override is allowed only through authorized operation, with an
+explicit reason and audit record.
+
+## Historical Integrity
+Do not destructively delete referenced structure.
+Do not rewrite historical student academic relationships when current structure
+changes.
+Do not alter Student identity.
+
+## Security / Audit
+Reuse existing authentication, authorization and audit infrastructure.
+Do not create parallel frameworks.
+
+## Testing
+Must cover:
+- persistence and migrations
+- seed correctness/idempotency
+- structural relationships
+- academic path
+- capacity and override
+- authorization
+- audit
+- concurrency
+- Module 01 regression
+- Module 02 regression
+- build/type/lint where applicable
+
+## Acceptance Matrix
+C-01 through C-26 define the Module 03 critical acceptance boundary.
+
+## Stop
+Decomposition only. No implementation, migrations, API, UI or verification.

@@ -1,0 +1,72 @@
+# SMS — Module 04 — Student Enrollment
+# 04.01 Specification
+
+## Status
+APPROVED / EXISTING
+
+## Purpose
+Enrollment represents the student's academic registration within a specific
+academic context.
+
+Canonical relationship:
+
+Student
++
+Academic Year
++
+Stage
++
+Grade
++
+Class
+=
+Enrollment
+
+Student is the permanent identity. Enrollment is the year-specific academic
+record and must preserve historical enrollment.
+
+## Dependencies
+Module 01 — Student Master Data
+Module 02 — Parent / Guardian
+Module 03 — Academic Structure
+
+## Core Requirements
+- Stable unique Enrollment identity.
+- Existing Student reference.
+- Existing Academic Year / Stage / Grade / Class references.
+- Relational integrity through proper keys/constraints.
+- Four approved admission types:
+  NEW, CONTINUING, TRANSFER-IN, RETURNING.
+- Enrollment lifecycle/status separate from Student Status and Academic Result.
+- Historical enrollment preservation.
+- Duplicate enrollment protection.
+- Capacity enforcement through the existing Module 03 mechanism.
+- Authorized administrative capacity override where approved.
+- Server-side authorization.
+- Shared persistent Audit infrastructure.
+- Real database persistence and versioned migrations.
+- Restart survival.
+- Concurrency protection.
+- Regression protection for Modules 01–03.
+
+## Identity Rule
+Do not create a new Student when creating a new academic enrollment.
+Student ID, File Number, and identity remain stable across enrollment history.
+
+## Scope Boundary
+Module 04 is Student Enrollment only.
+
+Do not implement Student Transfers, Promotion, Graduation, Attendance, Exams,
+Finance, HR, Notifications, Transportation, or other future modules.
+
+## UI Boundary
+Extend the existing multi-module SMS application shell.
+Do not replace it with a Module-04-only demo.
+
+## Testing Boundary
+Tests must use the real database infrastructure through the isolated test
+database mechanism. Never reset or reseed the operational database.
+
+## Completion Rule
+Module 04 is complete only when the approved C-01 → C-30 acceptance boundary
+is actually verified. Build success alone is insufficient.

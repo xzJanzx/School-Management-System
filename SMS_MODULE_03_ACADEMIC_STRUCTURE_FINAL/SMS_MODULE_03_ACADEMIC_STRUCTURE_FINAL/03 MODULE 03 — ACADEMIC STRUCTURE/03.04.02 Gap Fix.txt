@@ -1,0 +1,54 @@
+# SMS — Module 03 — Academic Structure
+# 03.04.02 Final Gap-Fix + Verification
+
+## Status
+COMPLETED
+
+## Verified Remediation Areas
+### GAP — Password Security
+The system was required to move away from plaintext/default password storage
+toward secure password hashing and secure password comparison while preserving
+existing users during migration.
+
+### GAP — Versioned Database Migrations
+The system was required to use versioned migrations rather than relying on
+application startup CREATE TABLE behavior.
+
+Expected model:
+
+Migration Runner
+    ↓
+Migration 0001
+    ↓
+Migration 0002
+    ↓
+Migration 0003
+    ↓
+Current Schema
+
+The migration strategy must preserve existing data and must not blindly reset
+or replace production data.
+
+## Verification Requirements
+- real persistent database
+- real migrations
+- restart survival
+- foreign keys
+- uniqueness
+- one Active Academic Year
+- historical integrity
+- seed integrity
+- academic ordering/path
+- capacity and authorized override
+- persistent audit
+- authentication/security
+- server-side authorization
+- test isolation
+- concurrency
+- Module 01 regression
+- Module 02 regression
+- production build
+
+## Completion
+The Master Project Prompt Index records 03.04.02 as COMPLETED and 03.05 as
+ACCEPTED.

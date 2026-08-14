@@ -1,0 +1,61 @@
+# SMS — Module 05
+# 05.04 — Independent Verification & Acceptance
+
+## Verdict
+🔴 NOT ACCEPTED
+
+## Scope
+C-31 through C-40, regression C-01 through C-30, repository/database/API/UI/
+security/audit/static/build verification.
+
+## Verified Artifacts
+- migrations/0004_student_transfers.sql
+- src/types/sms.ts
+- src/services/smsDb.ts
+- server.ts
+- src/components/TransferView.tsx
+- src/components/Header.tsx
+- src/App.tsx
+- src/tests/smsModule05TestSuite.ts
+
+## Static / Build
+TypeScript/lint: PASS
+Production build: PASS
+Modules 01–04 regression: PASS (C-01..C-30)
+
+## Acceptance Results
+C-31 FAIL
+C-32 PASS
+C-33 FAIL
+C-34 FAIL
+C-35 FAIL
+C-36 FAIL
+C-37 FAIL
+C-38 PASS
+C-39 FAIL
+C-40 FAIL
+
+## GAP-01 — High Severity
+Affected area:
+src/tests/smsModule05TestSuite.ts
+
+Root cause:
+The test setup creates students without explicitly supplying placement IDs from
+the freshly created isolated academic hierarchy. createStudent() falls back to
+hardcoded IDs such as STG-PRIM, GRD-P1, CLS-P1-A, AY-2025-2026. Those IDs do not
+exist in the reset test database.
+
+SQLite foreign-key enforcement rejects student creation. The setup catch block
+then leaves student1Id/student2Id empty, causing downstream transfer gates to
+reference an empty student ID.
+
+## Security
+No security regression or unauthenticated route bypass was identified.
+
+## Data Integrity
+Foreign-key enforcement correctly caught the invalid test setup references.
+
+## Final Decision
+NOT ACCEPTED.
+
+No source modification was performed during 05.04.

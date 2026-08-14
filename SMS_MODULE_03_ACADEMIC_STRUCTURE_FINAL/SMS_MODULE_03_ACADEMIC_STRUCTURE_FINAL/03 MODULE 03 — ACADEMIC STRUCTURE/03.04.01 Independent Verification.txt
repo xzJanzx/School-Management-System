@@ -1,0 +1,33 @@
+# SMS — Module 03 — Academic Structure
+# 03.04.01 Independent Verification
+
+## Status
+FINDINGS RESOLVED
+
+## Role
+Independent verification of the completed 03.04 baseline.
+
+## Verification Standard
+The audit is read-only and must use actual project evidence.
+It must distinguish:
+- real persistence from in-memory behavior
+- real migrations from startup CREATE TABLE behavior
+- actual password security from hardcoded/default passwords
+- real concurrency protection from test-only simulation
+- persistent audit from console/log output
+- actual regression evidence from test names alone
+
+## Historical Findings
+The independent verification process identified gaps in the areas of:
+1. password security
+2. versioned database migrations
+
+The project record states these findings were resolved before final acceptance.
+
+## Acceptance Gate
+Do not declare Module 03 accepted unless the mandatory persistence,
+database integrity, security, audit, concurrency, testing and regression
+requirements are genuinely verified.
+
+## Stop
+After independent findings are resolved, continue only to 03.04.02.

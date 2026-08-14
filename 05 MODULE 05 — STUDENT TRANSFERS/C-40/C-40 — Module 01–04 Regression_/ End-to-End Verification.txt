@@ -1,0 +1,14 @@
+# C-40 — Module 01–04 Regression / End-to-End Verification
+
+## Requirement
+Module 01–04 Regression / End-to-End Verification
+
+## Latest Status
+NOT ACCEPTED pending complete rerun of the full boundary.
+
+## Acceptance Rule
+PASS requires actual execution and evidence. An AI claim or source inspection
+alone is insufficient.
+
+## Boundary
+This gate belongs to the authoritative Module 05 C-31 → C-40 contract.

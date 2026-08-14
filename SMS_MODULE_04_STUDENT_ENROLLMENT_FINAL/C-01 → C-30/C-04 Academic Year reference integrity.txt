@@ -1,0 +1,21 @@
+# C-04 — Academic Year reference integrity
+
+## Module
+SMS — Module 04 — Student Enrollment
+
+## Requirement
+Academic Year reference integrity
+
+## Latest Accepted Status
+🟢 PASS
+
+## Evidence Boundary
+This gate belongs to the accepted Module 04 C-01 → C-30 verification boundary.
+
+## Verification Rule
+PASS is based on the recorded independent acceptance result. Future changes
+to the repository require re-verification if this behavior is affected.
+
+## Safety
+Do not weaken Student identity, relational integrity, capacity, authorization,
+audit, persistence, migration, concurrency, or historical guarantees.

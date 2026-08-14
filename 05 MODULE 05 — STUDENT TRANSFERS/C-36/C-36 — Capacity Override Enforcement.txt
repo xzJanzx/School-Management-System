@@ -1,0 +1,14 @@
+# C-36 — Capacity Override Enforcement
+
+## Requirement
+Capacity Override Enforcement
+
+## Latest Status
+FAIL in latest 05.04 due GAP-01.
+
+## Acceptance Rule
+PASS requires actual execution and evidence. An AI claim or source inspection
+alone is insufficient.
+
+## Boundary
+This gate belongs to the authoritative Module 05 C-31 → C-40 contract.

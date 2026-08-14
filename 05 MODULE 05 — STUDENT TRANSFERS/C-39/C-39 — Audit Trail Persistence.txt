@@ -1,0 +1,14 @@
+# C-39 — Audit Trail Persistence
+
+## Requirement
+Audit Trail Persistence
+
+## Latest Status
+FAIL in latest 05.04 because test setup failed.
+
+## Acceptance Rule
+PASS requires actual execution and evidence. An AI claim or source inspection
+alone is insufficient.
+
+## Boundary
+This gate belongs to the authoritative Module 05 C-31 → C-40 contract.

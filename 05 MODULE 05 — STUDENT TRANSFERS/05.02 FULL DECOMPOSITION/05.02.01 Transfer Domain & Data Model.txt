@@ -1,0 +1,21 @@
+# SMS — Module 05
+# 05.02.01 — Transfer Domain & Data Model
+
+This is an approved Module 05 implementation sub-scope.
+
+## Scope
+Implement/verify only the responsibilities of **Transfer Domain & Data Model**.
+
+## Dependencies
+Follow the authoritative Module 05 dependency chain and the 05.02 acceptance
+matrix. Reuse Modules 01–04 and shared infrastructure.
+
+## Outputs
+Produce only the artifacts required by this sub-scope.
+
+## Acceptance
+The sub-scope is complete only when its required behavior is evidenced.
+
+## Stop
+Stop at this sub-scope boundary. Do not automatically advance to another
+sub-scope or future module.

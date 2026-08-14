@@ -1,0 +1,64 @@
+# SMS — Module 05
+# 05.01 — Specification & Implementation Scope
+
+## Status
+APPROVED / EXISTING
+
+## Purpose
+Module 05 — Student Transfers manages controlled student transfer operations
+while preserving permanent Student identity, Enrollment history, Academic
+Structure integrity, transfer history, audit history, authorization, and
+relational integrity.
+
+## Responsibilities
+1. Transfer request lifecycle: create, review, approve, reject, execute, cancel.
+2. Transfer types: INTERNAL and EXTERNAL.
+3. Enrollment transition orchestration with Module 04.
+4. Capacity/path integration with Module 03.
+5. Authorization and audit integration.
+6. Transfer history/search.
+
+## Non-Responsibilities
+- Student Master ownership (Module 01).
+- Parent/Guardian management (Module 02).
+- Academic Year/Stage/Grade/Class ownership (Module 03).
+- Routine yearly enrollment/admission (Module 04).
+- Promotion, graduation, attendance, exams, finance, HR, notifications,
+  transportation, or other future modules.
+
+## Identity Rule
+The Student is the permanent identity. A transfer MUST NOT create a duplicate
+Student Master record.
+
+## Dependencies
+Module 01 — Student Master Data
+Module 02 — Parent / Guardian
+Module 03 — Academic Structure
+Module 04 — Student Enrollment
+
+## Transfer Types
+INTERNAL: student remains within the school and changes academic placement
+according to approved rules.
+
+EXTERNAL: student transfers to another school/institution while preserving
+historical identity and records.
+
+## Lifecycle
+PENDING → UNDER_REVIEW → APPROVED → EXECUTED
+
+Alternative approved paths include REJECTED and CANCELLED where permitted.
+Rejected requests do not change current enrollment, require a rejection reason,
+remain in history, and cannot be converted directly to EXECUTED.
+
+## Acceptance Boundary
+Module 05 acceptance is C-31 through C-40, continuing from Module 04's C-01
+through C-30.
+
+## Definition of Done
+Specification Complete != Implementation Complete != Verification/Acceptance Complete.
+
+No implementation is authorized by 05.01 itself.
+
+## No-Invention Rule
+If the authoritative sources do not define a requirement, treat it as
+OPEN DECISION rather than inventing it.

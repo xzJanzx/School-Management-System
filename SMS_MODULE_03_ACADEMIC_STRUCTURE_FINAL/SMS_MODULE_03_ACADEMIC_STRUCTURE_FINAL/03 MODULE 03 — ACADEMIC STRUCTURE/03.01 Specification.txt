@@ -1,0 +1,83 @@
+# SMS — Module 03 — Academic Structure
+# 03.01 Specification
+
+## Status
+APPROVED
+
+## Purpose
+Academic Structure is the configurable academic foundation of SMS.
+
+Canonical hierarchy:
+
+Academic Year
+    ↓
+Academic Stage
+    ↓
+Grade
+    ↓
+Class
+
+## Scope
+Module 03 owns:
+- Academic Year
+- Academic Stage
+- Grade
+- Class
+- default academic seed structure
+- ordering and academic path
+- class capacity
+- lifecycle and historical integrity
+- validation
+- permissions
+- audit integration
+- search/filtering
+- integration contracts required by later modules
+
+## Default Stage Model
+Approved stages include:
+- Baby Class
+- KG
+- Primary
+- Preparatory
+- Secondary
+
+KG1 and KG2 are Grades under KG, not separate stages.
+
+## Core Rules
+- Academic Year uniqueness.
+- Maximum one Active Academic Year.
+- Historical Academic Year preservation.
+- Stage → Grade integrity.
+- Grade → Class integrity.
+- Class Code uniqueness.
+- Default seed correctness and idempotency.
+- Academic ordering.
+- Academic path validation.
+- Invalid stage jumps are blocked.
+- Class capacity enforcement.
+- Authorized capacity override requires explicit reason and audit.
+- Referenced academic structure is not destructively deleted.
+- Historical academic relationships remain interpretable.
+- Student identity is not changed by structure changes.
+- Server-side authorization.
+- Persistent audit.
+- Concurrency protection.
+- Module 01 and Module 02 regression protection.
+
+## Boundaries
+Do NOT implement:
+- Student Enrollment
+- Promotion
+- Student Transfers
+- Attendance
+- Exams
+- Finance
+- HR
+- Notifications
+or other future modules.
+
+Do not create a second database strategy, authentication framework,
+authorization framework, or audit system.
+
+## Acceptance
+The authoritative acceptance boundary is C-01 through C-26.

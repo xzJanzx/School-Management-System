@@ -1,0 +1,20 @@
+# SMS — Module 05 Source Manifest
+
+Exact requested Module 05 package structure.
+
+Included:
+- 05.01 Specification
+- 05.02 FULL DECOMPOSITION
+- 05.02.01 through 05.02.15
+- 05.03 Implementation
+- 05.04 Verification
+- 05.05 Final Verification
+- C-31 through C-40
+
+Integrity notes:
+1. 05.03 is marked IMPLEMENTED/EXECUTED by the authoritative Prompt Index.
+   The standalone original 05.03 prompt was not separately retrievable from
+   the current source set, so no missing historical text was fabricated.
+2. 05.04 is the actual latest verification result: NOT ACCEPTED due GAP-01.
+3. 05.05 is an acceptance boundary for the next final verification; it is not
+   a fabricated PASS result.

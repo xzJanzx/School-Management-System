@@ -1,0 +1,14 @@
+# C-32 — Student Identity Preservation / Active Transfer Constraint
+
+## Requirement
+Student Identity Preservation / Active Transfer Constraint
+
+## Latest Status
+PASS in latest 05.04.
+
+## Acceptance Rule
+PASS requires actual execution and evidence. An AI claim or source inspection
+alone is insufficient.
+
+## Boundary
+This gate belongs to the authoritative Module 05 C-31 → C-40 contract.

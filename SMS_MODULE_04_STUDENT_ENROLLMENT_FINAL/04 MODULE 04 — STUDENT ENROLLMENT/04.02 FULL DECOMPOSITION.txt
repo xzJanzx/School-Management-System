@@ -1,0 +1,100 @@
+# SMS — Module 04 — Student Enrollment
+# 04.02 FULL DECOMPOSITION
+
+## 1. Domain
+- Student remains the permanent identity.
+- Enrollment is a separate historical academic record.
+- Admission types: NEW, CONTINUING, TRANSFER-IN, RETURNING.
+- Status/lifecycle is separate from Student Status and Academic Result.
+
+## 2. Data / Persistence
+Enrollment must reference existing:
+- students
+- academic_years
+- academic_stages
+- grades
+- classes
+
+Use:
+- primary key
+- foreign keys
+- unique constraints
+- indexes
+- lifecycle/status fields
+- timestamps
+- audit-compatible metadata
+
+Use the existing database and migration architecture.
+Do not create a parallel Enrollment database.
+
+## 3. Academic Binding
+Validate that Student, Academic Year, Stage, Grade and Class exist and that
+their relationships are valid according to Module 03.
+
+## 4. Capacity
+Reuse Module 03 capacity.
+Normal capacity blocks over-capacity enrollment.
+Approved administrative override requires authorization, required reason and
+audit evidence.
+
+## 5. Admission Types
+NEW:
+Use existing Student Master workflow where required; do not duplicate identity.
+
+CONTINUING:
+Create a new academic enrollment for the new academic context while retaining
+the same Student.
+
+TRANSFER-IN:
+Implement only the Enrollment-side transfer-in contract approved for Module 04.
+Do not implement the complete Module 05 transfer domain.
+
+RETURNING:
+Reuse the existing Student and preserve previous enrollment history.
+
+## 6. Historical Integrity
+Do not destroy historical Enrollment records through normal operations.
+Enrollment status must not be confused with Student status or Academic Result.
+
+## 7. Authorization
+Reuse existing server-side authentication/RBAC.
+Sensitive Enrollment mutations must be authorized server-side.
+Do not trust UI selectors or client-supplied roles.
+
+## 8. Audit
+Reuse shared persistent Audit infrastructure.
+Relevant operations include creation, status changes, class/academic changes,
+administrative overrides and sensitive corrections.
+Do not log secrets.
+
+## 9. API
+Implement only approved Enrollment operations using existing API conventions:
+creation, retrieval, search/filtering, permitted updates/status changes and
+history where required. Do not invent unrelated endpoints.
+
+## 10. UI
+Extend existing SMS navigation/layout/authentication/design system.
+Keep Modules 01–03 accessible.
+Required Enrollment searches may include Student ID, File Number, name,
+Academic Year, Stage, Grade, Class and Enrollment status.
+
+## 11. Concurrency
+Protect concurrent duplicate Enrollment attempts.
+Protect concurrent capacity-sensitive Enrollment operations.
+Use database constraints and/or atomic transactions rather than UI checks.
+
+## 12. Verification
+Verify:
+- database persistence
+- migrations and idempotency
+- restart survival
+- authorization
+- audit persistence
+- concurrency
+- UI/API behavior
+- Module 01–03 regression
+- type/lint/build quality gates
+
+## 13. Stop Boundary
+This is decomposition only. No implementation, migration creation, API coding,
+UI coding or verification execution is performed by 04.02 itself.
