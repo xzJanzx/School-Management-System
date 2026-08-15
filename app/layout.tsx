@@ -5,7 +5,7 @@ import './globals.css'
 const geist = Geist({ subsets: ['latin'], variable: '--font-geist' })
 const geistMono = Geist_Mono({ subsets: ['latin'], variable: '--font-geist-mono' })
 
-export const metadata: Metadata = { title: 'مدرستي | نظام إدارة المدرسة', description: 'نظام إدارة شؤون الطلاب' }
+export const metadata: Metadata = { title: 'مدار | نظام إدارة المدرسة', description: 'لوحة تشغيل عربية لإدارة شؤون الطلبة والعمليات المدرسية' }
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return <html lang="ar" dir="rtl" className="bg-background"><body className={`${geist.variable} ${geistMono.variable}`}>{children}</body></html>
